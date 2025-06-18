@@ -5,6 +5,7 @@
 package br.com.dobackaofront.lanchonete.view;
 
 import br.com.dobackaofront.lanchonete.model.Lanche;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -212,7 +213,7 @@ public class GUIMenu extends javax.swing.JFrame {
                     double precoConvertido = Double.parseDouble(preco); 
                     Lanche lanche = new Lanche(nome,precoConvertido);
                     lanche.apresentarLanche();
-                    
+                                        
                     jTextFieldCadastroLancheNome.setText("");
                     jTextFieldCadastroLanchePreco.setText("");
                     
@@ -230,16 +231,9 @@ public class GUIMenu extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        GUIMenu janelaPrincipal = new GUIMenu();
-       
-        java.awt.EventQueue.invokeLater(new Runnable(){
-            public void run () {
-                janelaPrincipal.setVisible(true);
-                janelaPrincipal.jInternalFrameCadastroLanche.setVisible(false);
-            }
-        } );
-    }
+   public JInternalFrame getJInternalFrameCadastroLanche() {
+       return jInternalFrameCadastroLanche;
+   }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCadastroLancheCancelar;

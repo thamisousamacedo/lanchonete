@@ -1,0 +1,8 @@
+CREATE DATABASE IF NOT EXISTS lanchonete;
+Use lanchonete;
+
+CREATE TABLE IF NOT EXISTS lanche (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    preco DOUBLE NOT NULL
+);

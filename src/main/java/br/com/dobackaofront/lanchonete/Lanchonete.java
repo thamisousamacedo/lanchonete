@@ -5,7 +5,8 @@
 package br.com.dobackaofront.lanchonete;
 
 import br.com.dobackaofront.lanchonete.controller.Banco;
-import br.com.dobackaofront.lanchonete.model.Lanche;
+import br.com.dobackaofront.lanchonete.view.GUIMenu;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -15,30 +16,28 @@ import java.sql.SQLException;
  */
 public class Lanchonete {
 
-    public static void main(String[] args) {
-        
+   /* public static void main(String[] args) throws SQLException, IOException {
         Banco b = new Banco();
         Connection conexao = b.conectar();
         
-        Lanche l = new Lanche("Café expresso", 5.90);
-        
-        if(conexao != null) {
-            try {
-                b.salvar(l, conexao);
-                conexao.close();
-            } catch(SQLException e) {
-                System.out.println("Erro ao fechar a conexão com o banco de dados");
-            }
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        Lanche l = new Lanche("Café Gelado", 9.90);
+        br.com.dobackaofront.lanchonete.model.Lanche lanche = null;
+        b.salvar(lanche, conexao);
     }
-}
+}*/
+     public static void main(String args[]) throws SQLException, IOException {
+        GUIMenu janelaPrincipal = new GUIMenu();
+        Banco b = new Banco();
+        b.inicializarBanco();
+        b = null;
+        
+       
+        java.awt.EventQueue.invokeLater(new Runnable(){
+            public void run () {
+                janelaPrincipal.setVisible(true);
+                janelaPrincipal.getJInternalFrameCadastroLanche().setVisible(false);
+            }
+        } );
+    }
+}     
+

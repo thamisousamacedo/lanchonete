@@ -4,6 +4,11 @@
  */
 package br.com.dobackaofront.lanchonete.model;
 
+import br.com.dobackaofront.lanchonete.controller.Banco;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+
 /**
  *
  * @author thami
@@ -12,9 +17,11 @@ public class Lanche {
     private String nome;
     private double preco;
     
-    public Lanche(String nome, double preco) {
+    public Lanche(String nome, double preco) throws SQLException, IOException {
         this.nome = nome;
         this.preco = preco;
+        
+        salvar(nome, preco);
     }
 
     /**
@@ -47,4 +54,10 @@ public class Lanche {
     public void apresentarLanche(){
     System.out.println("Nome: " + nome + ", R$ " + preco);
     } 
+    
+    private void salvar(String nome, double preco) throws SQLException, IOException {
+        Banco b = new Banco();
+        Connection conexao = b.conectar();
+        b.salvar(nome, preco, conexao);
+    }
 }
