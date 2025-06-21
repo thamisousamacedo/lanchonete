@@ -84,8 +84,10 @@ public class Lanche {
         
     }
     
-    public void deletar (int id) {
-        
+    public void deletar (int id) throws SQLException, IOException {
+        Banco b = new Banco();
+        Connection conexao = b.conectar();
+        b.deletar(id);
     }
 
     /**
