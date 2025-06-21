@@ -9,6 +9,7 @@ import br.com.dobackaofront.lanchonete.view.GUIMenu;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -29,13 +30,22 @@ public class Lanchonete {
         GUIMenu janelaPrincipal = new GUIMenu();
         Banco b = new Banco();
         b.inicializarBanco();
-        b = null;
+       
+        
+       ArrayList<br.com.dobackaofront.lanchonete.model.Lanche> lanches = b.buscarPorTrechoNome("pastel");
+       
+       for (br.com.dobackaofront.lanchonete.model.Lanche lanche : lanches) {
+           lanche.apresentarLanche();
+       }
+       
+       b = null;
         
        
         java.awt.EventQueue.invokeLater(new Runnable(){
             public void run () {
                 janelaPrincipal.setVisible(true);
                 janelaPrincipal.getJInternalFrameCadastroLanche().setVisible(false);
+                janelaPrincipal.getjInternalFramePesquisar().setVisible(false);
             }
         } );
     }
