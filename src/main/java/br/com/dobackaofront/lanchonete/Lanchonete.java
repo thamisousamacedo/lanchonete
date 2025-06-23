@@ -46,6 +46,8 @@ public class Lanchonete {
                 janelaPrincipal.setVisible(true);
                 janelaPrincipal.getJInternalFrameCadastroLanche().setVisible(false);
                 janelaPrincipal.getjInternalFramePesquisar().setVisible(false);
+                janelaPrincipal.getJInternalFrameEditarCadastro().setVisible(false);
+                
             }
         } );
     }

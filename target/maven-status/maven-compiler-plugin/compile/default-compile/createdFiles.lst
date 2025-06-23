@@ -1,11 +1,13 @@
 br\com\dobackaofront\lanchonete\view\jInternalFrame.class
 br\com\dobackaofront\lanchonete\view\GUIMenu$7.class
 br\com\dobackaofront\lanchonete\Lanche.class
+br\com\dobackaofront\lanchonete\view\GUIMenu$10.class
 br\com\dobackaofront\lanchonete\view\GUIMenu$1.class
 br\com\dobackaofront\lanchonete\view\lanche.class
 br\com\dobackaofront\lanchonete\Lanchonete.class
 br\com\dobackaofront\lanchonete\view\GUIMenu$6.class
 br\com\dobackaofront\lanchonete\Lanchonete$1.class
+br\com\dobackaofront\lanchonete\view\GUIMenu$11.class
 br\com\dobackaofront\lanchonete\view\GUIMenu$2.class
 br\com\dobackaofront\lanchonete\view\GUIMenu$4.class
 br\com\dobackaofront\lanchonete\model\Lanche.class
@@ -16,3 +18,4 @@ br\com\dobackaofront\lanchonete\view\GUIMenu$5.class
 br\com\dobackaofront\lanchonete\controller\DriveManager.class
 br\com\dobackaofront\lanchonete\view\GUIMenu$8.class
 br\com\dobackaofront\lanchonete\view\GUIMenu.class
+br\com\dobackaofront\lanchonete\view\GUIMenu$9.class
