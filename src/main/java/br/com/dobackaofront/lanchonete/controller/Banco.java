@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Banco {
     private String url;
@@ -259,5 +260,34 @@ public class Banco {
             System.out.println("O lanche não foi salvo no carrinho banco de dados!");
         }       
     }
-
+    
+    public HashMap<Lanche, Integer> buscarCarrinho(Connection conexao) throws IOException {
+        String sql = "SELECT * FROM carrinho";
+        HashMap<Lanche, Integer> carrinho = new HashMap<>();
+        
+        try {
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            
+            while(rs.next()) {
+                int id = rs.getInt("id");
+                String nome =rs.getString("nome");
+                double preco = rs.getDouble("preco");
+                int quantidade = rs.getInt("quantidade");
+                
+                Lanche lanche = new Lanche(nome, preco);
+                lanche.setId(id);
+                carrinho.put(lanche, quantidade);      
+            }
+            
+            rs.close();
+            stmt.close();
+            conexao.close();
+     
+        } catch(SQLException e) {
+            System.out.println("Erro ao buscar todos os lanches do banco de dados no metodo buscarCarrinho");
+        }
+        
+        return carrinho;
+    }   
 }

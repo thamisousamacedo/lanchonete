@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -128,6 +129,16 @@ public class Lanche {
         Connection conexao = b.conectar();
         b.adicionarCarrinho(lanche, quantidade, conexao);
     }
+    
+    public HashMap<Lanche, Integer> recuperarCarrinho() throws SQLException, IOException {
+        Banco b = new Banco();
+        Connection conexao = b.conectar();
+        HashMap<Lanche, Integer> carrinho = b.buscarCarrinho(conexao);
+        
+        return carrinho;
     }
+    
+    
+}
 
 
