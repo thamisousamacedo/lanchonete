@@ -121,5 +121,13 @@ public class Lanche {
         Lanche lanche = b.buscarPorId(id);
         return lanche;
     }
-}
+    
+    public void adicionarCarrinho(int id, int quantidade) throws SQLException, IOException {
+        Lanche lanche = buscarPorId(id);
+        Banco b = new Banco();
+        Connection conexao = b.conectar();
+        b.adicionarCarrinho(lanche, quantidade, conexao);
+    }
+    }
+
 

@@ -4,6 +4,7 @@
  */
 package br.com.dobackaofront.lanchonete.view;
 
+import br.com.dobackaofront.lanchonete.model.Carrinho;
 import br.com.dobackaofront.lanchonete.model.Lanche;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -21,6 +22,7 @@ public class GUIMenu extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUIMenu.class.getName());
     private Iterable<Lanche> lanches;
+    private Lanche lancheCarrinho;
 
     /**
      * Creates new form GUIMenu
@@ -473,6 +475,7 @@ public class GUIMenu extends javax.swing.JFrame {
     private void jButtonPesquisarConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarConfirmarActionPerformed
         // TODO add your handling code here:
         Lanche lanche = new Lanche();
+        Carrinho carrinho = new Carrinho();
         String opcao = jComboBoxPesquisarAcao.getSelectedItem().toString();
         System.out.println("Opção selecionada: " + opcao);
         
@@ -490,9 +493,10 @@ public class GUIMenu extends javax.swing.JFrame {
             
             jComboBoxPesquisarAcao.setSelectedIndex(0);
             jTextFieldPesquisarID.setText("");
+            jTextFieldPesquisarQuantidade.setText("");
             jInternalFramePesquisar.setVisible(false);
             
-        } else { //editar
+        } else if (opcao.equals("Editar")) { //editar
             jInternalFramePesquisar.setVisible(false);
             
             Lanche lancheRecuperado = null;
@@ -507,10 +511,25 @@ public class GUIMenu extends javax.swing.JFrame {
             jTextFieldEditarId.setText(idPesquisar + "");
             jTextFieldEditarNome.setText(lancheRecuperado.getNome());
             jTextFieldEditarPreco.setText(lancheRecuperado.getPreco() + "");
-            
-            
             jInternalFrameEditarCadastro.setVisible(true);
             
+        } else if (opcao.equals("Adicionar no Carrinho")) {
+            int id = Integer.parseInt(jTextFieldPesquisarID.getText());
+            int quantidade = Integer.parseInt(jTextFieldPesquisarQuantidade.getText());
+
+            try {
+                lanche.adicionarCarrinho(id, quantidade);
+            } catch (SQLException ex) {
+                System.getLogger(GUIMenu.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            } catch (IOException ex) {
+                System.getLogger(GUIMenu.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            }
+            
+            JOptionPane.showMessageDialog(rootPane, "O Lanche foi adicionado no Carrinho!");
+            jTextFieldPesquisarID.setText("");
+            jComboBoxPesquisarAcao.setSelectedIndex(0);
+            jTextFieldPesquisarQuantidade.setText("");
+            jInternalFramePesquisar.setVisible(false);
         }
     }//GEN-LAST:event_jButtonPesquisarConfirmarActionPerformed
 
