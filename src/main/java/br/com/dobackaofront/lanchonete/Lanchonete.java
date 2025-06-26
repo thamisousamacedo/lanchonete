@@ -5,7 +5,7 @@
 package br.com.dobackaofront.lanchonete;
 
 import br.com.dobackaofront.lanchonete.controller.Banco;
-import br.com.dobackaofront.lanchonete.view.GUIMenu;
+import br.com.dobackaofront.lanchonete.view.GUIMenu_1;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -27,7 +27,7 @@ public class Lanchonete {
     }
 }*/
      public static void main(String args[]) throws SQLException, IOException {
-        GUIMenu janelaPrincipal = new GUIMenu();
+        GUIMenu_1 janelaPrincipal = new GUIMenu_1();
         Banco b = new Banco();
         b.inicializarBanco();
        
@@ -41,16 +41,13 @@ public class Lanchonete {
        b = null;
         
        
-        java.awt.EventQueue.invokeLater(new Runnable(){
-            public void run () {
-                janelaPrincipal.setVisible(true);
-                janelaPrincipal.getJInternalFrameCadastroLanche().setVisible(false);
-                janelaPrincipal.getjInternalFramePesquisar().setVisible(false);
-                janelaPrincipal.getJInternalFrameEditarCadastro().setVisible(false);
-                janelaPrincipal.getJInternalFrameCarrinho().setVisible(false);
-                
-            }
-        } );
+        java.awt.EventQueue.invokeLater(() -> {
+            janelaPrincipal.setVisible(true);
+            janelaPrincipal.getJInternalFrameCadastroLanche().setVisible(false);
+            janelaPrincipal.getjInternalFramePesquisar().setVisible(false);
+            janelaPrincipal.getJInternalFrameEditarCadastro().setVisible(false);
+            janelaPrincipal.getJInternalFrameCarrinho().setVisible(false);
+        });
     }
 }     
 
